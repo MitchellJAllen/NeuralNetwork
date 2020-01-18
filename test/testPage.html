@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Neural Network Test</title>
+	</head>
+	<body>
+		<h1>Neural Network Test</h1>
+		<p>Be sure to check the developer console.</p>
+		<script src="script.js"></script>
+		<script>
+			var myNetwork = new NeuralNetwork(2, 2, [8]); // network: [2]-[8]-[2] //
+
+			// train the network with one million samples //
+			for (var iter = 0; iter < 1000000; iter++) {
+				var x = Math.random();
+				var y = Math.random();
+
+				myNetwork.trainWeightsAndBiases([x,y], [y,x]);
+			}
+
+			myNetwork.setInputValues([0.5, 0.7]);
+			myNetwork.calculateOutputs();
+
+			console.log("expected result: [0.5, 0.7] becomes [0.7, 0.5]");
+			console.log("actual result:");
+			console.log(myNetwork.getOutputValues());
+		</script>
+	</body>
+</html>

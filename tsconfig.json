@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"target": "ES5",
+		"lib": ["es5", "dom"],
+		"outFile": "test/script.js"
+	},
+	"files": [
+		"source/Vector.ts",
+		"source/Matrix.ts",
+		"source/NeuralNetwork.ts"
+	],
+}
