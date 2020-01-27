@@ -125,18 +125,18 @@ var NeuralNetwork = /** @class */ (function () {
         return x * (1 - x); // converts sigmoid output to its derivate value //
     };
     NeuralNetwork.prototype.randomizeWeightsAndBiases = function () {
-        for (var _i = 0, _a = this.weights; _i < _a.length; _i++) {
+        for (var _i = 0, _a = this.weights; _i < _a.length; _i++) { // weights ideally sampled from normal distribution, but uniform [-2,2) here //
             var weightMatrix = _a[_i];
             for (var rowIndex = 0; rowIndex < weightMatrix.getRowCount(); rowIndex++) {
                 for (var columnIndex = 0; columnIndex < weightMatrix.getColumnCount(); columnIndex++) {
-                    weightMatrix.setValue(rowIndex, columnIndex, Math.random());
+                    weightMatrix.setValue(rowIndex, columnIndex, 4 * Math.random() - 2);
                 }
             }
         }
-        for (var _b = 0, _c = this.biases; _b < _c.length; _b++) {
+        for (var _b = 0, _c = this.biases; _b < _c.length; _b++) { // biases can be set to 0 //
             var biasVector = _c[_b];
             for (var entryIndex = 0; entryIndex < biasVector.getEntryCount(); entryIndex++) {
-                biasVector.setValue(entryIndex, Math.random());
+                biasVector.setValue(entryIndex, 0);
             }
         }
     };

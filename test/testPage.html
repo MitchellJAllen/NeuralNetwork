@@ -9,20 +9,23 @@
 		<p>Be sure to check the developer console.</p>
 		<script src="script.js"></script>
 		<script>
-			var myNetwork = new NeuralNetwork(2, 2, [8]); // network: [2]-[8]-[2] //
+			var myNetwork = new NeuralNetwork(2, 2, [80]); // network: [2]-[80]-[2] //
 
-			// train the network with one million samples //
+			// train the network with one million samples on domain [0, 1), range [0, 1) //
 			for (var iter = 0; iter < 1000000; iter++) {
 				var x = Math.random();
 				var y = Math.random();
 
-				myNetwork.trainWeightsAndBiases([x,y], [y,x]);
+				var average = (x + y) / 2;
+				var product = (x * y);
+
+				myNetwork.trainWeightsAndBiases([x, y], [average, product]);
 			}
 
 			myNetwork.setInputValues([0.5, 0.7]);
 			myNetwork.calculateOutputs();
 
-			console.log("expected result: [0.5, 0.7] becomes [0.7, 0.5]");
+			console.log("expected result: [0.5, 0.7] becomes [0.6, 0.35]");
 			console.log("actual result:");
 			console.log(myNetwork.getOutputValues());
 		</script>

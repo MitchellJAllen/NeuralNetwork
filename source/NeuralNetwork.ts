@@ -64,17 +64,17 @@ class NeuralNetwork {
 	}
 
 	public randomizeWeightsAndBiases(): void { // starting point for a neural network //
-		for (let weightMatrix of this.weights) {
+		for (let weightMatrix of this.weights) { // weights ideally sampled from normal distribution, but uniform [-2,2) here //
 			for (let rowIndex = 0; rowIndex < weightMatrix.getRowCount(); rowIndex++) {
 				for (let columnIndex = 0; columnIndex < weightMatrix.getColumnCount(); columnIndex++) {
-					weightMatrix.setValue(rowIndex, columnIndex, Math.random());
+					weightMatrix.setValue(rowIndex, columnIndex, 4 * Math.random() - 2);
 				}
 			}
 		}
 
-		for (let biasVector of this.biases) {
+		for (let biasVector of this.biases) { // biases can be set to 0 //
 			for (let entryIndex = 0; entryIndex < biasVector.getEntryCount(); entryIndex++) {
-				biasVector.setValue(entryIndex, Math.random());
+				biasVector.setValue(entryIndex, 0);
 			}
 		}
 	}
